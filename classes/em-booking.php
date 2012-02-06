@@ -224,6 +224,9 @@ class EM_Booking extends EM_Object{
 				}
 			}
 			$this->booking_comment = (!empty($_REQUEST['booking_comment'])) ? wp_kses_data(stripslashes($_REQUEST['booking_comment'])):'';
+			if (!empty($_REQUEST['dbem_phone'])) {
+				$this->booking_comment .= "\n\nPhone: ". wp_kses_data(stripslashes($_REQUEST['dbem_phone']));
+			}
 			$this->get_spaces(true);
 			$this->get_price(true, false, false);
 			$this->get_person();

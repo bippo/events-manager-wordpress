@@ -19,7 +19,19 @@
 		<input type="text" name="user_email" id="user_email" class="input" <?php if(!empty($_REQUEST['user_email'])) echo "value='{$_REQUEST['user_email']}'"; ?>  />
 	</p>
 	<?php do_action('register_form'); ?>					
+<?php endif; ?>
+
+<?php if( is_user_logged_in() ): ?>
+<?php
+// Show and edit the phone number
+$EM_Person = new EM_Person( get_current_user_id() );
+?>
+	<p>
+		<label for='dbem_phone'><?php _e('Phone','dbem') ?></label>
+		<input type="text" name="dbem_phone" id="dbem_phone" class="input" <?php echo "value='{$EM_Person->data->phone}'"; ?> />
+	</p>
 <?php endif; ?>		
+		
 <p>
 	<label for='booking_comment'><?php _e('Comment', 'dbem') ?></label>
 	<textarea name='booking_comment'><?php echo !empty($_POST['booking_comment']) ? $_POST['booking_comment']:'' ?></textarea>
