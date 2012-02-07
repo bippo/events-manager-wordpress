@@ -81,7 +81,7 @@ class EM_Mailer {
 			}		
 			return $send;
 		}else{
-			$this->errors = __('Please supply a valid email format.', 'dbem');
+			$this->errors = __('Please supply a valid email format:' . var_export($receiver, true), 'dbem');
 			return false;
 		}
 	}
