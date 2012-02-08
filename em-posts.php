@@ -131,7 +131,7 @@ function wp_events_plugin_init(){
 			'not_found_in_trash' => __('No Events Found in Trash','dbem'),
 			'parent' => __('Parent Event','dbem'),
 		),
-		'menu_icon' => plugins_url('includes/images/calendar-16.png', __FILE__)
+		'menu_icon' => plugins_url('events-manager/includes/images/calendar-16.png')
 	));
 	if ( get_option('dbem_recurrence_enabled') ){
 		register_post_type('event-recurring', array(	
