@@ -28,9 +28,10 @@
 		<input type="text" name="em_search" class="em-events-search-text" value="<?php echo $s; ?>" onfocus="if(this.value=='<?php echo $s_default; ?>')this.value=''" onblur="if(this.value=='')this.value='<?php echo $s_default; ?>'" />
 		<!-- END General Search -->
 		<?php endif; ?>
-		
+
 		<?php if( !empty($search_dates) || (get_option('dbem_search_form_dates') && empty($search_dates)) ): ?>
 		<!-- START Date Search -->
+		
 		<span class="em-events-search-dates">
 			<?php _e('between','dbem'); ?>:
 			<input type="text" id="em-date-start-loc" />
@@ -39,9 +40,10 @@
 			<input type="text" id="em-date-end-loc" />
 			<input type="hidden" id="em-date-end" name="scope[1]" value="<?php if( !empty($_REQUEST['scope'][1]) ) echo $_REQUEST['scope'][1]; ?>" />
 		</span>
+	
 		<!-- END Date Search -->
 		<?php endif; ?>
-		
+		<br/>	<br/>
 		<?php if( !empty($search_categories) || (get_option('dbem_search_form_categories') && empty($search_categories)) ): ?>	
 		<!-- START Category Search -->
 		<select name="category" class="em-events-search-category">
