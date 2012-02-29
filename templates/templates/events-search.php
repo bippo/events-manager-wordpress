@@ -138,6 +138,6 @@
 		<?php do_action('em_template_events_search_form_ddm'); //depreciated, don't hook, use the one below ?>
 		<?php do_action('em_template_events_search_form_footer'); ?>
 		<input type="hidden" name="action" value="search_events" />
-		<input type="submit" value="<?php echo $s_default; ?>" class="em-events-search-submit" />		
+		<input type="submit" value="<?php// echo $s_default; ?>" class="em-events-search-submit" />		
 	</form>	
 </div>
