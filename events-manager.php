@@ -199,9 +199,9 @@ class EM_Scripts_and_Styles {
 	 */
 	function public_enqueue() {
 		//Scripts
-		wp_enqueue_script('events-manager', plugins_url('includes/js/events-manager.js',__FILE__), array('jquery', 'jquery-ui-core','jquery-ui-widget','jquery-ui-position')); //jQuery will load as dependency
+		wp_enqueue_script('events-manager', plugins_url('events-manager/includes/js/events-manager.js'), array('jquery', 'jquery-ui-core','jquery-ui-widget','jquery-ui-position')); //jQuery will load as dependency
 		//Styles
-		wp_enqueue_style('events-manager', plugins_url('includes/css/events_manager.css',__FILE__)); //main css
+		wp_enqueue_style('events-manager', plugins_url('events-manager/includes/css/events_manager.css')); //main css
 	}
 
 	/**
