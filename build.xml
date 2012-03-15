@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="events-manager">
+	<property file="plugin.properties"/>
+	<property file="development.properties"/>
+	<property file="deploy.properties"/>
+
+	<fail unless="plugin.name"/>
+	
+	<target name="symlink.create" description="Create symlinks in wp-content/plugins/${plugin.name}. It will not overwrite existing files/links.">
+		<fail unless="wordpress.dir"/>
+		<symlink link="${wordpress.dir}/wp-content/plugins/${plugin.name}" resource="${basedir}" failonerror="false"/>
+	</target>
+    
+	<target name="symlink.delete" description="Delete symlinks in wp-content/plugins/${plugin.name}. It will only delete files or symlinks, not directories.">
+		<fail unless="wordpress.dir"/>
+		<symlink action="delete" link="${wordpress.dir}/wp-content/plugins/${plugin.name}"/>
+	</target>
+
+    <target name="deploy"
+		description="Deploy ${plugin.name} theme files to ${server.user}@${server.host}:${server.dir} at port ${server.port}. Useful during development.">
+    	<fail unless="server.user"/>
+    	<fail unless="server.host"/>
+    	<fail unless="server.port"/>
+    	<fail unless="server.dir"/>
+    	<echo message="Deploying ${plugin.name} theme files to ${server.user}@${server.host}:${server.dir} at port ${server.port}..."/>
+		<exec executable="rsync">
+			<arg value="-e"/>
+			<arg value="ssh -p${server.port}"/>
+			<arg value="-vza"/>
+			<arg value="--delete"/>
+			<arg value="--exclude"/><arg value=".git"/>
+			<arg value="--exclude"/><arg value=".gitignore"/>
+			<arg value="--exclude"/><arg value=".project"/>
+			<arg value="--exclude"/><arg value="build.xml"/>
+			<arg value="--exclude"/><arg value="*.properties"/>
+			<arg value="--exclude"/><arg value="*.sample"/>
+			<arg value="."/>
+			<arg value="${server.user}@${server.host}:${server.dir}/wp-content/plugins/${plugin.name}" />
+		</exec>
+    </target>
+
+</project>

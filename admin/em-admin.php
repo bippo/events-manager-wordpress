@@ -87,7 +87,7 @@ function em_admin_menu(){
 add_action('admin_menu','em_admin_menu');
 
 function em_ms_admin_menu(){
-	add_menu_page( __('Events Manager','dbem'), __('Events Manager','dbem'), 'activate_plugins', 'events-manager-options', 'em_ms_admin_options_page', plugins_url('includes/images/calendar-16.png', dirname(dirname(__FILE__)).'/events-manager.php') );
+	add_menu_page( __('Events Manager','dbem'), __('Events Manager','dbem'), 'activate_plugins', 'events-manager-options', 'em_ms_admin_options_page', plugins_url('events-manager/includes/images/calendar-16.png') );
 	add_submenu_page('events-manager-options', __('Update Blogs','dbem'),__('Update Blogs','dbem'), 'activate_plugins', "events-manager-update", 'em_ms_upgrade');	
 }
 add_action('network_admin_menu','em_ms_admin_menu');
